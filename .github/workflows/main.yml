@@ -28,8 +28,8 @@ jobs:
       - name: Docker Hub Push
         run: |
           docker-compose push
-          
-       - name: Copy docker-compose.yml to EC2
+
+      - name: Copy docker-compose.yml to EC2
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.WAS_HOST }}
