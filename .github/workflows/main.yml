@@ -36,9 +36,10 @@ jobs:
           username: ec2-user
           key: ${{ secrets.KEY }}
           script: |
-            scp docker-compose.yml ec2-user@${{ secrets.WAS_HOST }}:/home/ec2-user/docker-compose.yml  # Copy docker-compose.yml to EC2
+            scp docker-compose.yml {{ secrets.WAS_HOST }}:/home/ec2-user/docker-compose.yml
             docker stop $(docker ps -a -q) 
             docker rm $(docker ps -a -q)
+            cd /home/ec2-user/
             docker-compose pull  # Pull the latest images on EC2
             docker-compose up -d  # Run the containers on EC2
 
