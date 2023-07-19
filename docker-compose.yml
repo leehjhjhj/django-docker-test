@@ -1,13 +1,13 @@
 version: '3'
 services:
   nginx:
-    image:
-      nginx:latest
+    build: ./config/nginx
     ports:
       - "80:80"
     volumes:
       - .:/code
       - ./nginx/nginx:/etc/nginx.conf.d
+    image: 11thbackend/nginx:latest
     depends_on:
       - web
   web:
@@ -19,3 +19,4 @@ services:
       - .:/code
     ports:
       - "8000:8000"
+    image: 11thbackend/web:latest
