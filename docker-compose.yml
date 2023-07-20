@@ -22,3 +22,5 @@ services:
       - "8000:8000"
     platform: linux/amd64
     image: 11thbackend/web:latest
+    environment:
+      - DJANGO_SETTINGS_MODULE=hackathon.settings.prod.py
