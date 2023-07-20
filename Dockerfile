@@ -2,12 +2,14 @@ FROM python:3.9.6
 
 ENV PYTHONUNBUFFERED 1
 
-RUN apt-get -y update && apt-get -y install vim apt-utils && apt-get clean
-RUN mkdir /code
-ADD . /code
+RUN apt-get update \
+    && apt-get install -y vim apt-utils \
+    && apt-get clean
 
+RUN mkdir /code
 WORKDIR /code
+
+COPY . /code/
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-
