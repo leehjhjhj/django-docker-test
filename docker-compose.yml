@@ -7,6 +7,7 @@ services:
     volumes:
       - .:/code
       - ./nginx/nginx:/etc/nginx.conf.d
+      - ./static:/static
     image: 11thbackend/nginx:latest
     depends_on:
       - web
@@ -17,7 +18,7 @@ services:
       dockerfile: Dockerfile
     command: gunicorn --bind 0.0.0.0:8000 hackathon.wsgi:application
     volumes:
-      - .:/code
+      - .:/code #현재 호스트의 작업 디렉토리를 컨테이너 내부의 /code 로 마운팅 한다는 뜻
     ports:
       - "8000:8000"
     platform: linux/amd64
