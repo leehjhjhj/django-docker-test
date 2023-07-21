@@ -7,7 +7,6 @@ services:
     volumes:
       - .:/code
       - ./nginx/nginx:/etc/nginx.conf.d
-      - ./static:/static
     image: 11thbackend/nginx:latest
     depends_on:
       - web
